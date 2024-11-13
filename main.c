@@ -2,8 +2,11 @@
 #include <stdlib.h>
 #include <windows.h>
 #include <wincrypt.h>
+#include <locale.h>
+#include <wchar.h>
 
-int gerar(int a){
+
+int gerar(short int a){
 
     HCRYPTPROV hProv;
     BYTE randomBytes[4]; // Array de 4 bytes para gerar um nï¿½mero de 32 bits
@@ -17,7 +20,7 @@ int gerar(int a){
 
     // Gera nï¿½meros aleatï¿½rios
     if (!CryptGenRandom(hProv, sizeof(randomBytes), randomBytes)) {
-        printf("Falha ao gerar o nï¿½mero aleatï¿½rio\n");
+        printf("Falha ao gerar o nÃºmero aleatï¿½rio\n");
         CryptReleaseContext(hProv, 0);
         return -1;
     }
@@ -25,7 +28,7 @@ int gerar(int a){
     // Converte os bytes aleatï¿½rios para um nï¿½mero inteiro
     random_number = (randomBytes[0] << 24) | (randomBytes[1] << 16) | (randomBytes[2] << 8) | randomBytes[3];
 
-    int max = a;
+    short int max = a;
         a= reduzir(random_number, max);
         imprimir(a);
     return a;
@@ -33,24 +36,24 @@ int gerar(int a){
 }
 
 int reduzir(unsigned int random_number, int m){
-    int min = 1;
-    int max = m;
-    int a = min + (random_number % (max - min + 1));
+    short int min = 1;
+    short int max = m;
+    short int a = min + (random_number % (max - min + 1));
     return a;
 }
 
-void imprimir(int result){
+void imprimir(short int result){
     printf("%d ", result);
 }
 
 typedef struct no{//Um dia eu faÃ§o Ã¡rvore BinÃ¡ria ou B sla.
-    int valor;
+    short int valor;
     struct no *prox;
 }No;
 typedef struct{
     No *inicio, *fim;
  }Lista;
-void inserirInicio(Lista *lista, int valor){
+void inserirInicio(Lista *lista, short int valor){
     No *novo = (No*)malloc(sizeof(No));
     novo->valor = valor;
     if(lista->inicio == NULL){
@@ -62,8 +65,8 @@ void inserirInicio(Lista *lista, int valor){
         lista->inicio = novo;
     }
  }
-void somarLista(Lista *lista, int valor){
-    int rep=0;
+void somarLista(Lista *lista, short int valor){
+    short int rep=0;
     No *inicio = lista->inicio;
     if(inicio == NULL)
         return;
@@ -75,7 +78,7 @@ void somarLista(Lista *lista, int valor){
                 inicio = inicio->prox;
         }
     }
-    int soma = valor * rep;
+    short int soma = valor * rep;
     if (rep == 0 || rep == 1)
         return;
     printf("\n\nSoma dos %d's: %d\n", valor, soma);
@@ -100,14 +103,14 @@ void somarLista(Lista *lista, int valor){
 
 int main() {
     //HCRYPTPROV hProv;
+    setlocale(LC_ALL,"Portuguese");//GlÓRIA AAAAAAAAAAAAAA DESGRAÇA
     char entrada[5];
-    int rep, temp;
+    short int rep, temp;
     Lista lista;
     lista.inicio = NULL;
     lista.fim = NULL;
-
 do{
-        printf("Quantos dados quer jogar?\n00 - Para Sair - cc para limpar\n");
+        printf("Quantos dados quer jogar?\n00 - Para Sair & cc para limpar\n");
         scanf("%s", entrada);
         printf("\n");
         if(strcmp(entrada, "cc")==0)
@@ -117,19 +120,19 @@ do{
         }
         else if((rep = atoi(entrada))<=20 && strcmp(entrada, "00")!=0)
         { printf("----------------------\n");
-            for(int i = 0; i < rep; i++)
+            for(short int i = 0; i < rep; i++)
                 {
                 temp = gerar(6);
                 inserirInicio(&lista, temp);
                 Sleep(350);
-                } for(int i = 1; i < 7; i++){
+                } for(short int i = 1; i < 7; i++){
                     temp = i;
                     somarLista(&lista, temp);
                 } remover(&lista);
-        printf("\n----------------------\n");
+        printf("----------------------\n");
         printf("\n\n");
-        } else if(rep = atoi(entrada)>=20)
-                printf("\nMaximo de Dados eh 20.\n\n");
+        } else if(rep = atoi(entrada)>20)
+                printf("\nMáximo de Dados é 20.\n\n");
         Sleep(250);
 }while(strcmp(entrada, "00")!= 0);
 
