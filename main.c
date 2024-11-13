@@ -115,7 +115,7 @@ do{
             system("cls");
             continue;
         }
-        else if((rep = atoi(entrada))<=20)
+        else if((rep = atoi(entrada))<=20 && strcmp(entrada, "00")!=0)
         { printf("----------------------\n");
             for(int i = 0; i < rep; i++)
                 {
@@ -128,7 +128,7 @@ do{
                 } remover(&lista);
         printf("\n----------------------\n");
         printf("\n\n");
-        } else
+        } else if(rep = atoi(entrada)>=20)
                 printf("\nMaximo de Dados eh 20.\n\n");
         Sleep(250);
 }while(strcmp(entrada, "00")!= 0);
