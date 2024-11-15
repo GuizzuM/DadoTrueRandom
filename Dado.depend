@@ -1,0 +1,31 @@
+# depslib dependency file v1.0
+1731199722 source:c:\users\guilherme de matos\downloads\códigos\codeblocks c\dado\main.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<wincrypt.h>
+
+1731206331 source:c:\users\guilherme de matos\downloads\códigos\codeblocks c\dado\icon.rc
+
+1731206331 source:c:\users\guilherme de matos\downloads\relacionadosprogramação\códigos\codeblocks c\dado\icon.rc
+
+1731640335 source:c:\users\guilherme de matos\downloads\relacionadosprogramação\códigos\codeblocks c\dado\main.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<wincrypt.h>
+	<locale.h>
+	<wchar.h>
+
+1731649939 source:c:\users\guilherme de matos\downloads\relacionadosprogramação\códigos\codeblocks c\dado\lista.c
+	"lista.h"
+	<stdio.h>
+
+1731649793 c:\users\guilherme de matos\downloads\relacionadosprogramação\códigos\codeblocks c\dado\lista.h
+
+1731650091 source:c:\users\guilherme de matos\downloads\relacionadosprogramação\códigos\codeblocks c\dado\random.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<wincrypt.h>
+
